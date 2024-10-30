@@ -3,25 +3,25 @@ import Img from '../assets/images/Traveller 1.png';
 export function LandingPage() {
   return (
     <>
-      <div className="flex justify-between">
+      <div className="flex justify-center items-center mb-4">
         <div>
-          <div>
-            <h2>BEST DESTINATIONS AROUND THE WORLD</h2>
-            <p>Travel, enjoy and live a new full life</p>
-            <p>
+          <div className='flex flex-col gap-4'>
+            <h2 className='text-xs font-bold text-orange-500'>BEST DESTINATIONS AROUND THE WORLD</h2>
+            <p className='text-6xl font-bold'>Travel, enjoy<br/> and live a new <br/>full life</p>
+            <p className='text-sm text-slate-600'>
               Build Wicket longer admire so barton vanity itself do in
-              it.Preferred to sportsmen it engrosed listening. Park gate self
+              it <br/>Preferred to sportsmen it engrosed listening. Park gate<br/>self
               they west hard for life
             </p>
-            <div className="flex gap-3">
-              <button className="rounded-sm bg-[#fbbf24] px-5 py-1 ">
+            <div className="flex gap-4">
+              <button className="rounded-sm bg-[#fbbf24] px-5 py-0.5 font-semibold drop-shadow-md">
                 Find out more
               </button>
-              <div className="flex">
+              <div className="flex items-center gap-2">
                 <button>
                   <svg
-                    width="60"
-                    height="55"
+                    width="45"
+                    height="45"
                     viewBox="0 0 135 135"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +75,7 @@ export function LandingPage() {
                     </defs>
                   </svg>
                 </button>
-                <button className="px-5 py-1">Play Demo</button>
+                <button className="mx-3 py-1 font-semibold">Play Demo</button>
               </div>
             </div>
           </div>
