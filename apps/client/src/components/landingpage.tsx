@@ -1,8 +1,14 @@
 import Img from '../assets/images/Traveller 1.png';
+import { Header } from './header';
+import { Services } from './services';
+import { Destinations } from './destinations';
+import { Testimonials } from './testimonials';
+import { Footer } from './footer';
 
 export function LandingPage() {
   return (
     <>
+    <Header />
       <div className="flex justify-center items-center mb-4">
         <div>
           <div className='flex flex-col gap-4'>
@@ -84,6 +90,10 @@ export function LandingPage() {
           <img src={Img} />
         </div>
       </div>
+      <Services />
+      <Destinations />
+      <Testimonials />
+      <Footer />
     </>
   );
 }

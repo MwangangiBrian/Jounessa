@@ -1,19 +1,18 @@
-import { Destinations } from './components/destinations';
-import { Header } from './components/header';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { LandingPage } from './components/landingpage';
-import { Services } from './components/services';
-import { Testimonials } from './components/testimonials';
-import { Footer } from './components/footer';
+import { Login } from './components/auth/login';
+import { Signup } from './components/auth/signup';
 
 function App() {
   return (
     <>
-      <Header />
-      <LandingPage />
-      <Services />
-      <Destinations />
-      <Testimonials />
-      <Footer />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LandingPage />}></Route>
+          <Route path="/auth/login" element={<Login />}></Route>
+          <Route path="/auth/signup" element={<Signup />}></Route>
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 import Image from "../assets/images/JournessaLogo.png";
 export function Header() {
   return (
     <>
       <div className="flex justify-around justify-items-center gap-6 mt-4 cursor-pointer ">
-        <div className="py-2"><img className="h-10 flex-none" src={Image} /></div>
+        <div className="py-2"><Link to={'/'}><img className="h-10 flex-none" src={Image} /></Link></div>
         <div className="flex w-200 gap-5 font-semibold">
           <ul className="list-none flex gap-6 py-4 justify-items-center font-semibold">
             <li className="ml-2 ">Destinations</li>
