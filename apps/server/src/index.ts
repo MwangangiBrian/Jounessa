@@ -1,14 +1,13 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import pool from './config/db';
 import { errorHandler } from './middlewares/errorHandler';
 
 import router from './routes/userRoutes';
-import { createUserTable } from './data/createUser';
+import { PrismaClient } from '@prisma/client';
 
 dotenv.config();
-
+const prisma = new PrismaClient()
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -22,13 +21,13 @@ app.use('/api', router);
 // Error Handler
 app.use(errorHandler);
 
-//create table
-createUserTable();
 
-// test postgres connection
+// test connection
 app.get('/', async (req, res) => {
-  const result = await pool.query('SELECT current_database()');
-  res.send(`The database name is : ${result.rows}`);
+  const result = await prisma.$queryRaw`SELECT * FROM User`;
+  console.log(result)
+  res.send(`The database name is : ${result}`);
+  
 });
 
 app.listen(port, () => {

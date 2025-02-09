@@ -41,8 +41,8 @@ export const getAllUsers = async (
   next: NextFunction
 ) => {
   try {
-    const users = getAllUsersService();
-    HandleResponse(res, 200, 'Users fetched Successfully');
+    const users = await getAllUsersService();
+    HandleResponse(res, 200, 'Users fetched Successfully', users);
   } catch (err) {
     next(err);
   }
@@ -71,7 +71,7 @@ export const updateUser = async (
   try {
     const updatedUser = await updateUserService(req.params.id, name, email);
     if (!updatedUser) return HandleResponse(res, 404, 'User not Found');
-    HandleResponse(res, 200, 'User fetched successfully', updatedUser);
+    HandleResponse(res, 200, 'User updated successfully', updatedUser);
   } catch (err) {
     next(err);
   }

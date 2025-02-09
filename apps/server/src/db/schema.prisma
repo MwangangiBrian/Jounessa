@@ -1,0 +1,160 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(uuid())
+  name      String
+  email     String    @unique
+  password  String
+  role      Role      @default(USER)
+  trips     Trip[]
+  bookings  Booking[]
+  reviews   Review[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @default(now()) @updatedAt
+}
+
+enum Role {
+  USER
+  ADMIN
+  GUIDE
+}
+
+model Location {
+  id           String        @id @default(uuid())
+  city         String
+  state        String
+  country      String
+  destinations Destination[]
+  hotels       Hotel[]
+
+  @@unique([city, state, country])
+}
+
+model Destination {
+  id          String            @id @default(uuid())
+  name        String
+  description String?
+  location    Location          @relation(fields: [locationId], references: [id])
+  locationId  String
+  trips       TripDestination[]
+  media       Media[]
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @default(now()) @updatedAt
+}
+
+model Hotel {
+  id             String              @id @default(uuid())
+  name           String
+  address        String
+  location       Location            @relation(fields: [locationId], references: [id])
+  locationId     String
+  amenities      String[]
+  pricePerNight  Int
+  currency       String              @default("USD")
+  media          Media[]
+  accommodations TripAccommodation[]
+  reviews        Review[]
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @default(now()) @updatedAt
+}
+
+model Trip {
+  id             String              @id @default(uuid())
+  name           String
+  description    String
+  durationDays   Int
+  basePrice      Int
+  currency       String              @default("USD")
+  user           User                @relation(fields: [userId], references: [id])
+  userId         String
+  destinations   TripDestination[]
+  accommodations TripAccommodation[]
+  bookings       Booking[]
+  reviews        Review[]
+  media          Media[]
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @default(now()) @updatedAt
+}
+
+model TripDestination {
+  trip          Trip        @relation(fields: [tripId], references: [id])
+  tripId        String
+  destination   Destination @relation(fields: [destinationId], references: [id])
+  destinationId String
+  visitOrder    Int
+
+  @@id([tripId, destinationId])
+}
+
+model TripAccommodation {
+  id        String   @id @default(uuid())
+  trip      Trip     @relation(fields: [tripId], references: [id])
+  tripId    String
+  hotel     Hotel    @relation(fields: [hotelId], references: [id])
+  hotelId   String
+  checkIn   DateTime
+  checkOut  DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
+model Booking {
+  id        String        @id @default(uuid())
+  user      User          @relation(fields: [userId], references: [id])
+  userId    String
+  trip      Trip          @relation(fields: [tripId], references: [id])
+  tripId    String
+  status    BookingStatus @default(PENDING)
+  paymentId String?
+  startDate DateTime
+  endDate   DateTime
+  guests    Int
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @default(now()) @updatedAt
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}
+
+model Review {
+  id        String   @id @default(uuid())
+  rating    Int      @default(2)
+  comment   String?
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  trip      Trip?    @relation(fields: [tripId], references: [id])
+  tripId    String?
+  hotel     Hotel?   @relation(fields: [hotelId], references: [id])
+  hotelId   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt
+}
+
+model Media {
+  id            String       @id @default(uuid())
+  url           String
+  type          MediaType
+  destination   Destination? @relation(fields: [destinationId], references: [id])
+  destinationId String?
+  hotel         Hotel?       @relation(fields: [hotelId], references: [id])
+  hotelId       String?
+  trip          Trip?        @relation(fields: [tripId], references: [id])
+  tripId        String?
+  createdAt     DateTime     @default(now())
+}
+
+enum MediaType {
+  IMAGE
+  VIDEO
+}
