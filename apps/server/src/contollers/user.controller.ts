@@ -26,9 +26,9 @@ export const createUser = async (
   res: Response,
   next: NextFunction
 ) => {
-  const { firstName, lastName, email, password } = req.body;
+  const { name, email, password } = req.body;
   try {
-    const newUser = await createUserService(firstName, lastName, email, password);
+    const newUser = await createUserService(name, email, password);
     HandleResponse(res, 201, 'User created Successfully', newUser);
   } catch (err) {
     next(err);
@@ -41,8 +41,8 @@ export const getAllUsers = async (
   next: NextFunction
 ) => {
   try {
-    const users = getAllUsersService();
-    HandleResponse(res, 200, 'Users fetched Successfully');
+    const users = await getAllUsersService();
+    HandleResponse(res, 200, 'Users fetched Successfully', users);
   } catch (err) {
     next(err);
   }
@@ -71,7 +71,7 @@ export const updateUser = async (
   try {
     const updatedUser = await updateUserService(req.params.id, name, email);
     if (!updatedUser) return HandleResponse(res, 404, 'User not Found');
-    HandleResponse(res, 200, 'User fetched successfully', updatedUser);
+    HandleResponse(res, 200, 'User updated successfully', updatedUser);
   } catch (err) {
     next(err);
   }
