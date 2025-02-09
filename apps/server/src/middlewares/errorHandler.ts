@@ -1,6 +1,9 @@
 // error handling
 
 import { Request, Response, NextFunction } from 'express';
+import { PrismaClient } from '@prisma/client';
+
+const prisma = new PrismaClient();
 
 export const errorHandler = (err: Error, req: Request, res: Response, next: NextFunction) => {
   console.log(err.stack);
