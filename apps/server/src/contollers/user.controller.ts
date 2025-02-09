@@ -28,10 +28,10 @@ export const createUser = async (
 ) => {
   const { name, email, password } = req.body;
   try {
-    const newUser = await createUserService(name, email, password);
-    HandleResponse(res, 201, 'User created Successfully', newUser);
-  } catch (err) {
-    next(err);
+    const user = await createUserService(name, email, password);
+    res.status(201).json(user);
+  } catch (error) {
+    next(error);
   }
 };
 
@@ -42,9 +42,9 @@ export const getAllUsers = async (
 ) => {
   try {
     const users = await getAllUsersService();
-    HandleResponse(res, 200, 'Users fetched Successfully', users);
-  } catch (err) {
-    next(err);
+    res.status(200).json(users);
+  } catch (error) {
+    next(error);
   }
 };
 
@@ -53,12 +53,12 @@ export const getUserById = async (
   res: Response,
   next: NextFunction
 ) => {
+  const { id } = req.params;
   try {
-    const user = await getUserByIdService(req.params.id);
-    if (!user) return HandleResponse(res, 404, 'User not Found');
-    HandleResponse(res, 200, 'User fetched successfully', user);
-  } catch (err) {
-    next(err);
+    const user = await getUserByIdService(id);
+    res.status(200).json(user);
+  } catch (error) {
+    next(error);
   }
 };
 
@@ -67,13 +67,13 @@ export const updateUser = async (
   res: Response,
   next: NextFunction
 ) => {
+  const { id } = req.params;
   const { name, email } = req.body;
   try {
-    const updatedUser = await updateUserService(req.params.id, name, email);
-    if (!updatedUser) return HandleResponse(res, 404, 'User not Found');
-    HandleResponse(res, 200, 'User updated successfully', updatedUser);
-  } catch (err) {
-    next(err);
+    const user = await updateUserService(id, name, email);
+    res.status(200).json(user);
+  } catch (error) {
+    next(error);
   }
 };
 
@@ -82,11 +82,11 @@ export const deleteUser = async (
   res: Response,
   next: NextFunction
 ) => {
+  const { id } = req.params;
   try {
-    const user = await deleteUserService(req.params.id);
-    if (!user) return HandleResponse(res, 404, 'User not Found');
-    HandleResponse(res, 200, 'User deleted successfully', user);
-  } catch (err) {
-    next(err);
+    await deleteUserService(id);
+    res.status(204).send();
+  } catch (error) {
+    next(error);
   }
 };
