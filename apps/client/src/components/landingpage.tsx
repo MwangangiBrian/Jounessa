@@ -13,7 +13,7 @@ export function LandingPage() {
         <div>
           <div className='flex flex-col gap-4'>
             <h2 className='text-xs font-bold text-orange-500'>BEST DESTINATIONS AROUND THE WORLD</h2>
-            <p className='text-6xl font-bold'>Travel, enjoy<br/> and live a new <br/>full life</p>
+            <p className='text-6xl font-bold'>Travel, enjoy<br/> and live a <br/>full life</p>
             <p className='text-sm text-slate-600'>
               Build Wicket longer admire so barton vanity itself do in
               it <br/>Preferred to sportsmen it engrosed listening. Park gate<br/>self
