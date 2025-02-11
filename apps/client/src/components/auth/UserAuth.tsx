@@ -2,6 +2,7 @@ import { useState } from 'react';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 import auth from '../../assets/images/login/auth.jpg';
+import { Header } from '../header';
 
 export const UserAuth = () => {
     const [isLogin, setIsLogin] = useState(true);
@@ -10,14 +11,13 @@ export const UserAuth = () => {
         setIsLogin(!isLogin);
     };
 
-    return (
-        <div className="flex justify-center items-center w-screen h-screen bg-gray-100">
-            <div className="flex bg-white shadow-lg rounded-lg overflow-hidden max-w-4xl w-full">
+    return (<>
+        <Header />
+        <div className="flex justify-center items-center w-screen h-screen bg-gray-100 p-4 ">
+            <div className="flex bg-white shadow-lg rounded-xl overflow-hidden max-w-4xl w-full p-4">
                 <div className="w-1/2 relative">
-                    <img src={auth} alt="auth-image" className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-white p-8">
-                        
-                    </div>
+                    <img src={auth} alt="auth-image" className="w-full h-full object-cover rounded-lg" />
+                    
                 </div>
                 <div className="w-1/2 p-8 flex flex-col justify-center">
                     <div className="text-2xl font-bold mb-6">{isLogin ? 
@@ -61,5 +61,6 @@ export const UserAuth = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
