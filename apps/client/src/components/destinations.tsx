@@ -256,7 +256,7 @@ export function Destinations() {
 
               {/* Main Card */}
               <div
-                className="relative bg-white rounded-[26px] p-6 
+                className="relative bg-primary rounded-[26px] p-6 
                 shadow-[0px_100px_80px_rgba(0,0,0,0.02),0px_64.8148px_46.8519px_rgba(0,0,0,0.0151852),0px_38.5185px_25.4815px_rgba(0,0,0,0.0121481),0px_20px_13px_rgba(0,0,0,0.01),0px_8.14815px_6.51852px_rgba(0,0,0,0.00785185),0px_1.85185px_3.14815px_rgba(0,0,0,0.00481481)] 
                 before:absolute before:-top-10 before:-right-10 before:w-[354px] before:h-[367px] 
                 before:bg-[#59B1E6] before:opacity-5 before:rounded-[26px] before:rotate-[-12deg] 
