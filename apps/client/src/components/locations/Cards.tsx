@@ -25,7 +25,13 @@ const Cards = () => {
       <CardContent>
       </CardContent>
       <CardFooter className="flex justify-between">
-            <LocationModal country={location.country} state={location.state} city={location.city} destinations={location.destinations.map((destination) => (destination.id))} hotels={location.hotels.map((hotel) => (hotel.id))} />
+            <LocationModal 
+              country={location.country} 
+              state={location.state} 
+              city={location.city} 
+              destinations={location.destinations} 
+              hotels={location.hotels} 
+            />
         
       </CardFooter>
     </Card>
