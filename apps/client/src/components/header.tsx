@@ -8,8 +8,8 @@ export function Header() {
         <div className="py-2"><Link to={'/'}><img className="h-10 flex-none" src={Image} /></Link></div>
         <div className="flex w-200 gap-5 font-semibold ">
           <ul className="list-none flex gap-6 py-4 justify-items-center font-semibold">
-            <li className="ml-2 ">Destinations</li>
-            <li>Hotels</li>
+            <Link to={'/locations'}><li className="ml-2 ">Destinations</li></Link>
+            <Link to={'/hotels'}><li>Hotels</li></Link>
             <li>Flights</li>
             <li>Bookings</li>
           </ul>
