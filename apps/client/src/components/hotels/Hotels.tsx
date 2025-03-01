@@ -2,8 +2,9 @@
 
 import { useState } from 'react'
 import { FiStar, FiMapPin, FiSearch, FiFilter } from 'react-icons/fi'
-import { Hotel } from '@/types'
-
+import { Hotel } from '../../types'
+import { Header } from '../header'
+import { Footer } from '../footer'
 const Hotels = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedSort, setSelectedSort] = useState('price')
@@ -38,6 +39,7 @@ const Hotels = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <Header />
       {/* Search and Filter Section */}
       <div className="bg-white shadow-sm">
         <div className="max-w-7xl mx-auto px-4 py-8">
@@ -125,6 +127,7 @@ const Hotels = () => {
           ))}
         </div>
       </div>
+      <Footer />
     </div>
   )
 }
