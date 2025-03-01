@@ -390,5 +390,54 @@ export const locations = [
             "price_per_night": 200
           }
         ]
-      }
-    ]
+      },
+      {
+      "id": 9,
+      "country": "South Africa",
+      "state": "Western Cape",
+      "city": "Cape Town",
+      "destinations": [
+        {
+          "id": 1,
+          "name": "Table Mountain",
+          "description": "Iconic flat-topped mountain with panoramic city and ocean views.",
+          "type": "Natural Landmark"
+        },
+        {
+          "id": 2,
+          "name": "Robben Island",
+          "description": "Historic island prison where Nelson Mandela was imprisoned.",
+          "type": "Historical Site"
+        },
+        {
+          "id": 3,
+          "name": "V&A Waterfront",
+          "description": "Vibrant harbor area with shopping, dining, and entertainment.",
+          "type": "Cultural Site"
+        }
+      ],
+      "hotels": [
+        {
+          "id": 1,
+          "name": "The Silo Hotel",
+          "rating": 5,
+          "address": "Silo Square, V&A Waterfront, Cape Town 8001, South Africa",
+          "price_per_night": 500
+        },
+        {
+          "id": 2,
+          "name": "Belmond Mount Nelson Hotel",
+          "rating": 5,
+          "address": "76 Orange Street, Gardens, Cape Town 8001, South Africa",
+          "price_per_night": 450
+        },
+        {
+          "id": 3,
+          "name": "Southern Sun Cape Sun",
+          "rating": 4,
+          "address": "Cnr Wale & Adderley Streets, Cape Town 8001, South Africa",
+          "price_per_night": 200
+        }
+      ]
+    }
+  ]
