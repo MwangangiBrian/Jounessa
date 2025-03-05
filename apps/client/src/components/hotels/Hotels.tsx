@@ -2,9 +2,9 @@
 
 import { useState } from 'react'
 import { FiStar, FiMapPin, FiSearch, FiFilter } from 'react-icons/fi'
-import { Hotel } from '../../types'
+import type { Hotel } from '../../../types'
 import { Header } from '../header'
-import { Footer } from '../footer'
+import { Footer } from '@/components/footer'
 const Hotels = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedSort, setSelectedSort] = useState('price')
@@ -101,7 +101,7 @@ const Hotels = () => {
                 </div>
 
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {hotel.amenities.map((amenity) => (
+                  {hotel.amenities.map((amenity: string) => (
                     <span 
                       key={amenity}
                       className="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-sm"
