@@ -10,3 +10,19 @@ export const createHotelService = async (
     data: { name, address, amenities, pricePerNight },
   });
 };
+
+export const getAllHotelsService = async () => {
+  return await prisma.hotel.findMany();
+};
+
+export const getHotelByIdService = async (id: string) => {
+  return await prisma.hotel.findUnique({
+    where: { id },
+  });
+};
+
+export const deleteHotelService = async (id: string) => {
+  return await prisma.hotel.delete({
+    where: { id },
+  });
+};

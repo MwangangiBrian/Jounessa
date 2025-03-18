@@ -1,5 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
-import { createHotelService } from '../models/hotelsModel';
+import {
+  createHotelService,
+  deleteHotelService,
+  getAllHotelsService,
+  getHotelByIdService,
+} from '../models/hotelsModel';
 
 export const createHotel = async (
   req: Request,
@@ -15,6 +20,47 @@ export const createHotel = async (
       pricePerNight
     );
     res.status(201).json(hotel);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getAllHotels = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const hotel = await getAllHotelsService();
+    res.status(200).json(hotel);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const getHotelById = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { id } = req.body;
+    const hotel = getHotelByIdService(id);
+    res.status(200).json(hotel);
+  } catch (error) {
+    next(error);
+  }
+};
+
+export const deleteHotel = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { id } = req.body;
+    await deleteHotelService(id);
+    res.status(204).send();
   } catch (error) {
     next(error);
   }
