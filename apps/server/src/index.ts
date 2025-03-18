@@ -7,6 +7,7 @@ import router from './routes/userRoutes';
 import authRouter from './routes/userAuthRoutes';
 import { PrismaClient } from '@prisma/client';
 import destRouter from './routes/destinations';
+import hotelRouter from './routes/hotelRoutes';
 
 dotenv.config();
 const prisma = new PrismaClient();
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use('/api', router);
 app.use('/auth', authRouter);
 app.use('/destinations', destRouter);
+app.use('/hotels', hotelRouter);
 
 // Error Handler
 app.use(errorHandler);
