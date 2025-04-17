@@ -4,9 +4,6 @@
 
 Journessa is a travel application that allows users to explore top destinations, book trips, and access various travel-related services. The application is built using modern web technologies and provides a seamless user experience.
 
-### Live Site: 
-https://whispering-diamond-acoustic.on-fleek.app/
-
 ## Features
 
 * **Top Destinations**: Explore top-selling destinations with detailed information and images.
